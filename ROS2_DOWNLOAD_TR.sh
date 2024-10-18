@@ -112,7 +112,7 @@ ubuntu_22045() {
 
   ask_to_run 'sudo apt install ros-humble-desktop' "ROS Humble masaüstü ortamını yükler."
 
-  ask_to_run 'echo /opt/ros/humble/setup.bash >> ~/.bashrc' "ROS ortam değişkenlerini bash oturumlarına ekler."
+  ask_to_run 'echo source /opt/ros/humble/setup.bash >> ~/.bashrc' "ROS ortam değişkenlerini bash oturumlarına ekler."
 
   ask_to_run 'source ~/.bashrc' "Yeniden başlatmaya gerek kalmadan bashrc değişikliklerini geçerli oturuma uygular."
 
