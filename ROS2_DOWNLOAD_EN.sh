@@ -116,7 +116,7 @@ ubuntu_22045() {
 
   ask_to_run 'sudo apt install ros-humble-desktop' "Installs the ROS Humble desktop environment."
 
-  ask_to_run 'echo /opt/ros/humble/setup.bash >> ~/.bashrc' "Adds ROS environment variables to bash sessions."
+  ask_to_run 'echo source /opt/ros/humble/setup.bash >> ~/.bashrc' "Adds ROS environment variables to bash sessions."
 
   ask_to_run 'source ~/.bashrc' "Applies the changes to the current session without restarting."
 
