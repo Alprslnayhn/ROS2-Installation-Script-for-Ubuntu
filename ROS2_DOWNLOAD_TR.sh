@@ -1,31 +1,26 @@
-# KAYNAKÇA
-# RTFM
-# Jazzy Jalisco:
-# https://www.youtube.com/watch?v=08o46x5SfJM
-# https://www.youtube.com/watch?v=dY8JxldcuqA
-# https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
-#
-# Humble Hawksbill:
-# https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
-#
-# ---------------------------------------
-
 #!/bin/bash
+
+# ANSI renk kodları
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+RESET='\033[0m'
 
 # Function to ask for confirmation
 ask_to_run() {
-  echo "Komutu çalıştırmak ister misiniz? (y/n): $1"
+  echo -e "${BLUE}Komutu çalıştırmak ister misiniz? ${YELLOW}(Enter: evet / n: hayır)${RESET}: $1"
   read -r answer
-  if [[ $answer == "y" ]]; then
+  if [[ $answer != "n" ]]; then
     eval "$1"
     if [ $? -eq 0 ]; then
-      echo "Komut başarıyla çalıştı: $1"
+      echo -e "${GREEN}Komut başarıyla çalıştı:${RESET} $1"
     else
-      echo "Komutta bir sorun oluştu: $1"
+      echo -e "${RED}Komutta bir sorun oluştu:${RESET} $1"
     fi
-    echo "Komutun işlevi: $2"
+    echo -e "${YELLOW}Komutun işlevi:${RESET} $2"
   else
-    echo "Komut atlandı: $1"
+    echo -e "${RED}Komut atlandı:${RESET} $1"
   fi
 }
 
@@ -67,16 +62,16 @@ ubuntu_2404() {
 
   ask_to_run 'source ~/.bashrc' "Yeniden başlatmaya gerek kalmadan bashrc değişikliklerini geçerli oturuma uygular."
 
-  echo "ROS2 Jazzy kurulumu tamamlandı. Gazebo kurulum sorunlarını düzeltmek ister misiniz? (y/n)"
+  echo "ROS2 Jazzy kurulumu tamamlandı. Gazebo kurulum sorunlarını düzeltmek ister misiniz? (Enter: evet / n: hayır)"
   read -r gazebo_answer
-  if [[ $gazebo_answer == "y" ]]; then
+  if [[ $gazebo_answer != "n" ]]; then
     ask_to_run 'echo ${ROS_DISTRO}' "Mevcut ROS dağıtımını ekrana yazdırır."
     ask_to_run 'printenv ROS_DISTRO' "ROS_DISTRO ortam değişkenini ekrana yazdırır."
     ask_to_run 'sudo apt-get update && sudo apt-get upgrade' "Sistemi günceller ve yükseltir."
     ask_to_run 'sudo apt-get install ros-${ROS_DISTRO}-ros-gz' "ROS ile Gazebo entegrasyonu için gerekli paketleri yükler."
     ask_to_run 'gz sim' "Gazebo simülasyon ortamını başlatır."
   else
-    echo "Gazebo kurulumu atlandı."
+    echo -e "${RED}Gazebo kurulumu atlandı.${RESET}"
   fi
 }
 
@@ -120,7 +115,7 @@ ubuntu_22045() {
 }
 
 # Asking for Ubuntu version
-echo "Hangi Ubuntu sürümünü kullanıyorsunuz? (1: Ubuntu 24.04.1, 2: Ubuntu 22.04.5)"
+echo -e "${YELLOW}Hangi Ubuntu sürümünü kullanıyorsunuz? ${BLUE}(1: Ubuntu 24.04.1, 2: Ubuntu 22.04.5)${RESET}"
 read -r ubuntu_version
 
 if [ "$ubuntu_version" == "1" ]; then
@@ -128,5 +123,5 @@ if [ "$ubuntu_version" == "1" ]; then
 elif [ "$ubuntu_version" == "2" ]; then
   ubuntu_22045
 else
-  echo "Geçersiz seçim!"
+  echo -e "${RED}Geçersiz seçim!${RESET}"
 fi
