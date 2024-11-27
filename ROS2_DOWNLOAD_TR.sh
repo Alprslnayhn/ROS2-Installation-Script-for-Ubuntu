@@ -1,5 +1,18 @@
 #!/bin/bash
 
+#RTFM
+# REFERENCES
+# 
+# Jazzy Jalisco:
+# https://www.youtube.com/watch?v=08o46x5SfJM
+# https://www.youtube.com/watch?v=dY8JxldcuqA
+# https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
+#
+# Humble Hawksbill:
+# https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
+#
+# ---------------------------------------
+
 # ANSI renk kodları
 RED='\033[0;31m'
 GREEN='\033[0;32m'
