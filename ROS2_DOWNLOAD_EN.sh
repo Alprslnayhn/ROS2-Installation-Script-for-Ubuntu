@@ -12,20 +12,20 @@
 #
 # ---------------------------------------
 
-# Function to ask for confirmation
+# Function to ask for confirmation with enhanced formatting
 ask_to_run() {
-  echo "Do you want to run this command? (y/n): $1"
+  echo -e "\033[1;36mDo you want to run this command? (y/n): $1\033[0m"  # Cyan, bold
   read -r answer
   if [[ $answer == "y" ]]; then
     eval "$1"
     if [ $? -eq 0 ]; then
-      echo "Command executed successfully: $1"
+      echo -e "\033[1;32mCommand executed successfully: $1\033[0m"  # Green
     else
-      echo "There was an error in the command: $1"
+      echo -e "\033[1;31mThere was an error in the command: $1\033[0m"  # Red
     fi
     echo "Function of the command: $2"
   else
-    echo "Command skipped: $1"
+    echo -e "\033[1;33mCommand skipped: $1\033[0m"  # Yellow
   fi
 }
 
@@ -124,7 +124,7 @@ ubuntu_22045() {
 }
 
 # Asking for Ubuntu version
-echo "Which version of Ubuntu are you using? (1: Ubuntu 24.04.1, 2: Ubuntu 22.04.5)"
+echo -e "\033[1;35mWhich version of Ubuntu are you using? (1: Ubuntu 24.04.1, 2: Ubuntu 22.04.5)\033[0m"
 read -r ubuntu_version
 
 if [ "$ubuntu_version" == "1" ]; then
@@ -132,5 +132,5 @@ if [ "$ubuntu_version" == "1" ]; then
 elif [ "$ubuntu_version" == "2" ]; then
   ubuntu_22045
 else
-  echo "Invalid selection!"
+  echo -e "\033[1;31mInvalid selection!\033[0m"
 fi
