@@ -86,7 +86,39 @@ ubuntu_2404() {
   else
     echo -e "${RED}Gazebo kurulumu atlandı.${RESET}"
   fi
+
+  echo "Development environment for Ubuntu 24.04'ü yapılandırmak ister misiniz? (Enter: evet / n: hayır)"
+  read -r dev_env_answer
+  if [[ $dev_env_answer != "n" ]]; then
+    echo "Geliştirme ortamını yapılandırmaya başlıyoruz..."
+
+    ask_to_run 'sudo apt-get update && sudo apt-get upgrade' "Sistemi günceller."
+
+    ask_to_run 'sudo apt-get install terminator' "Terminator terminalini yükler."
+
+    echo "ROS 2 paketlerini kuruyoruz..."
+
+    ask_to_run 'sudo apt-get install ros-jazzy-ros2-control' "ROS 2 Control paketini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-ros2-controllers' "ROS 2 Controllers paketini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-xacro' "Xacro paketini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-ros-gz-*' "Gazebo entegrasyon paketlerini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-*-ros2-control' "Tüm ROS 2 Control paketlerini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-joint-state-publisher-gui' "Joint State Publisher GUI paketini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-turtlesim' "Turtlesim paketini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-robot-localization' "Robot Localization paketini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-joy' "Joystick kontrol paketini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-joy-teleop' "Joy Teleoperation paketini yükler."
+    ask_to_run 'sudo apt-get install ros-jazzy-tf-transformations' "TF Transformations paketini yükler."
+
+    echo "Python paketlerini kuruyoruz..."
+
+    ask_to_run 'sudo apt-get install python3-pip' "Python3 Pip paket yöneticisini yükler."
+    ask_to_run 'sudo apt-get install python3-transforms3d' "Transforms3d Python paketini yükler."
+  else
+    echo -e "${RED}Development environment kurulumu atlandı.${RESET}"
+  fi
 }
+
 
 # Function for Ubuntu 22.04.5 LTS (Jammy Jellyfish)
 ubuntu_22045() {
@@ -125,7 +157,45 @@ ubuntu_22045() {
   ask_to_run 'source ~/.bashrc' "Yeniden başlatmaya gerek kalmadan bashrc değişikliklerini geçerli oturuma uygular."
 
   ask_to_run 'printenv ROS_DISTRO' "Mevcut ROS dağıtımını ekrana yazdırır."
+
+  echo -e "${YELLOW}Geliştirme ortamını yapılandırmak ister misiniz? (Enter: evet / n: hayır)${RESET}"
+  read -r dev_env_answer
+  
+  if [[ $dev_env_answer != "n" ]]; then
+    ask_to_run 'sudo apt-get update && sudo apt-get upgrade' "Sistemi günceller ve yükseltir."
+
+    ask_to_run 'sudo apt-get install terminator' "Terminator terminalini kurar."
+
+    ask_to_run 'sudo apt-get install ros-humble-ros2-control' "ROS2 Control paketini yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-ros2-controllers' "ROS2 Controller paketini yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-xacro' "Xacro paketini yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-ros-gz-*' "Gazebo ile entegrasyon için gerekli paketleri yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-*-ros2-control' "ROS2 Control paketlerinin tümünü yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-joint-state-publisher-gui' "Joint State Publisher GUI paketini yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-turtlesim' "Turtlesim simülasyon paketini yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-robot-localization' "Robot Localization paketini yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-joy' "Joy paketini yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-joy-teleop' "Joy Teleop paketini yükler."
+
+    ask_to_run 'sudo apt-get install ros-humble-tf-transformations' "TF Transformations paketini yükler."
+
+    ask_to_run 'sudo apt-get install python3-pip' "Python3 Pip paket yöneticisini yükler."
+
+    ask_to_run 'pip install transforms3d' "Python'da transforms3d paketini yükler."
+  else
+    echo -e "${RED}Geliştirme ortamı kurulumu atlandı.${RESET}"
+  fi
 }
+
 
 # Asking for Ubuntu version
 echo -e "${YELLOW}Hangi Ubuntu sürümünü kullanıyorsunuz? ${BLUE}(1: Ubuntu 24.04.1, 2: Ubuntu 22.04.5)${RESET}"
