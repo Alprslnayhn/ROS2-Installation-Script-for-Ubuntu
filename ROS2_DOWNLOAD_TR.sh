@@ -7,10 +7,11 @@
 # https://www.youtube.com/watch?v=08o46x5SfJM
 # https://www.youtube.com/watch?v=dY8JxldcuqA
 # https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
+# https://www.udemy.com/course/self-driving-and-ros-2-learn-by-doing-odometry-control/
 #
 # Humble Hawksbill:
 # https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
-#
+# https://www.udemy.com/course/self-driving-and-ros-2-learn-by-doing-odometry-control/
 # ---------------------------------------
 
 # ANSI renk kodları
