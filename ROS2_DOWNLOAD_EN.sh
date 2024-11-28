@@ -6,9 +6,11 @@
 # https://www.youtube.com/watch?v=08o46x5SfJM
 # https://www.youtube.com/watch?v=dY8JxldcuqA
 # https://docs.ros.org/en/jazzy/Installation/Ubuntu-Install-Debs.html
+# https://www.udemy.com/course/self-driving-and-ros-2-learn-by-doing-odometry-control/
 #
 # Humble Hawksbill:
 # https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
+# https://www.udemy.com/course/self-driving-and-ros-2-learn-by-doing-odometry-control/
 #
 # ---------------------------------------
 
@@ -82,6 +84,38 @@ ubuntu_2404() {
   else
     echo "Gazebo installation skipped."
   fi
+  
+echo "Do you want to configure the development environment for Ubuntu 24.04? (Press Enter: yes / n: no)"
+read -r dev_env_answer
+if [[ $dev_env_answer != "n" ]]; then
+echo "Starting to configure the development environment..."
+
+ask_to_run 'sudo apt-get update && sudo apt-get upgrade' "Updates the system."
+
+ask_to_run 'sudo apt-get install terminator' "Installs the Terminator terminal."
+
+echo "Installing ROS 2 packages..."
+
+ask_to_run 'sudo apt-get install ros-jazzy-ros2-control' "Installs the ROS 2 Control package."
+ask_to_run 'sudo apt-get install ros-jazzy-ros2-controllers' "Installs the ROS 2 Controllers package."
+ask_to_run 'sudo apt-get install ros-jazzy-xacro' "Installs the Xacro package."
+ask_to_run 'sudo apt-get install ros-jazzy-ros-gz-*' "Installs Gazebo integration packages."
+ask_to_run 'sudo apt-get install ros-jazzy-*-ros2-control' "Installs all ROS 2 Control packages."
+ask_to_run 'sudo apt-get install ros-jazzy-joint-state-publisher-gui' "Installs the Joint State Publisher GUI package."
+ask_to_run 'sudo apt-get install ros-jazzy-turtlesim' "Installs the Turtlesim package."
+ask_to_run 'sudo apt-get install ros-jazzy-robot-localization' "Installs the Robot Localization package."
+ask_to_run 'sudo apt-get install ros-jazzy-joy' "Installs the joystick control package."
+ask_to_run 'sudo apt-get install ros-jazzy-joy-teleop' "Installs the Joy Teleoperation package."
+ask_to_run 'sudo apt-get install ros-jazzy-tf-transformations' "Installs the TF Transformations package."
+
+echo "Installing Python packages..."
+
+ask_to_run 'sudo apt-get install python3-pip' "Installs the Python3 Pip package manager."
+ask_to_run 'sudo apt-get install python3-transforms3d' "Installs the Transforms3d Python package."
+else
+echo -e "${RED}Development environment setup skipped.${RESET}"
+fi
+
 }
 
 # Function for Ubuntu 22.04.5 LTS (Jammy Jellyfish)
@@ -121,6 +155,43 @@ ubuntu_22045() {
   ask_to_run 'source ~/.bashrc' "Applies the changes to the current session without restarting."
 
   ask_to_run 'printenv ROS_DISTRO' "Prints the ROS_DISTRO environment variable."
+
+echo -e "${YELLOW}Do you want to configure the development environment? (Press Enter: yes / n: no)${RESET}"
+read -r dev_env_answer
+if [[ $dev_env_answer != "n" ]]; then
+  ask_to_run 'sudo apt-get update && sudo apt-get upgrade' "Updates and upgrades the system."
+
+  ask_to_run 'sudo apt-get install terminator' "Installs the Terminator terminal."
+
+  ask_to_run 'sudo apt-get install ros-humble-ros2-control' "Installs the ROS2 Control package."
+
+  ask_to_run 'sudo apt-get install ros-humble-ros2-controllers' "Installs the ROS2 Controller package."
+
+  ask_to_run 'sudo apt-get install ros-humble-xacro' "Installs the Xacro package."
+
+  ask_to_run 'sudo apt-get install ros-humble-ros-gz-*' "Installs the necessary packages for Gazebo integration."
+
+  ask_to_run 'sudo apt-get install ros-humble-*-ros2-control' "Installs all ROS2 Control packages."
+
+  ask_to_run 'sudo apt-get install ros-humble-joint-state-publisher-gui' "Installs the Joint State Publisher GUI package."
+
+  ask_to_run 'sudo apt-get install ros-humble-turtlesim' "Installs the Turtlesim simulation package."
+
+  ask_to_run 'sudo apt-get install ros-humble-robot-localization' "Installs the Robot Localization package."
+
+  ask_to_run 'sudo apt-get install ros-humble-joy' "Installs the Joy package."
+
+  ask_to_run 'sudo apt-get install ros-humble-joy-teleop' "Installs the Joy Teleop package."
+
+  ask_to_run 'sudo apt-get install ros-humble-tf-transformations' "Installs the TF Transformations package."
+
+  ask_to_run 'sudo apt-get install python3-pip' "Installs the Python3 Pip package manager."
+
+  ask_to_run 'pip install transforms3d' "Installs the transforms3d Python package."
+else
+  echo -e "${RED}Development environment setup skipped.${RESET}"
+fi
+
 }
 
 # Asking for Ubuntu version
