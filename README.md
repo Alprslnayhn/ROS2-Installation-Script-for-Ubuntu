@@ -21,25 +21,25 @@ This repository contains a bash script that automates the installation of ROS2 d
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/your-repository-name.git
+   git clone https://github.com/Alprslnayhn/ROS2-Installation-Script-for-Ubuntu
    ```
 
 2. Navigate to the repository directory:
 
    ```bash
-   cd your-repository-name
+   cd ROS2-Installation-Script-for-Ubuntu
    ```
 
 3. Make the script executable:
 
    ```bash
-   chmod +x ros2_installation.sh
+   chmod +x ROS2_DOWNLOAD_TR.sh
    ```
 
 4. Run the script:
 
    ```bash
-   ./ros2_installation.sh
+   ./ROS2_DOWNLOAD_TR.sh
    ```
 
 5. The script will ask you to select the Ubuntu version you're using and proceed with the corresponding ROS2 installation.
