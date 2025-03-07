@@ -213,7 +213,7 @@ if [[ -n "$user_input" ]]; then
     echo "Installation cancelled."
     exit 1
 fi
-
+# Ask the user if they are working with Nav2 and Ackermann Control
 echo "Are you working with Nav2 and Ackermann Control? (Press Enter to continue, Ctrl+C to cancel)"
 read -r user_input
 
@@ -223,27 +223,11 @@ if [[ -n "$user_input" ]]; then
     exit 1
 fi
 
-
-  echo "Are you working with Nav2 and Ackermann Control? (Press Enter to continue, Ctrl+C to cancel)"
-read -r user_input
-
-# If the user does not press Enter, exit the script
-if [[ -n "$user_input" ]]; then
-    echo "Installation cancelled."
-    exit 1
-fi
-
-# Check for updates and install necessary packages
-echo "Updating the system..."
-sudo apt update && sudo apt upgrade -y
-
-# Install ROS 2 packages
-echo "Installing ROS 2 Nav2 and dependencies..."
-sudo apt install -y \
-    ros-humble-nav2-bringup \
-    ros-humble-gazebo-ros-pkgs \
-    ros-humble-ackermann-msgs
+# Run commands with confirmation
+ask_to_run "sudo apt update && sudo apt upgrade -y" "Updating the system"
+ask_to_run "sudo apt install -y ros-humble-nav2-bringup ros-humble-gazebo-ros-pkgs ros-humble-ackermann-msgs" "Installing ROS 2 Nav2 and dependencies"
 
 echo "Installation completed."
+
 
 
