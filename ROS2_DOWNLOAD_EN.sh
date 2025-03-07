@@ -205,3 +205,45 @@ elif [ "$ubuntu_version" == "2" ]; then
 else
   echo -e "\033[1;31mInvalid selection!\033[0m"
 fi
+echo "Are you working with Nav2 and Ackermann Control? (Press Enter to continue, Ctrl+C to cancel)"
+read -r user_input
+
+# If the user does not press Enter, exit the script
+if [[ -n "$user_input" ]]; then
+    echo "Installation cancelled."
+    exit 1
+fi
+
+echo "Are you working with Nav2 and Ackermann Control? (Press Enter to continue, Ctrl+C to cancel)"
+read -r user_input
+
+# If the user does not press Enter, exit the script
+if [[ -n "$user_input" ]]; then
+    echo "Installation cancelled."
+    exit 1
+fi
+
+
+  echo "Are you working with Nav2 and Ackermann Control? (Press Enter to continue, Ctrl+C to cancel)"
+read -r user_input
+
+# If the user does not press Enter, exit the script
+if [[ -n "$user_input" ]]; then
+    echo "Installation cancelled."
+    exit 1
+fi
+
+# Check for updates and install necessary packages
+echo "Updating the system..."
+sudo apt update && sudo apt upgrade -y
+
+# Install ROS 2 packages
+echo "Installing ROS 2 Nav2 and dependencies..."
+sudo apt install -y \
+    ros-humble-nav2-bringup \
+    ros-humble-gazebo-ros-pkgs \
+    ros-humble-ackermann-msgs
+
+echo "Installation completed."
+
+
