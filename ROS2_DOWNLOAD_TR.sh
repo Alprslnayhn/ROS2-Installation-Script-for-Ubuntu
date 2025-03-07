@@ -32,9 +32,7 @@ ask_to_run() {
     else
       echo -e "${RED}Komutta bir sorun oluştu:${RESET} $1"
     fi
-    echo -e "${YELLOW}Komutun i# Kullanıcıya Nav2 ve Ackermann Control ile uğraşıp uğraşmadığını sor
-
-echo "Kurulum tamamlandı."şlevi:${RESET} $2"
+    echo -e "${YELLOW}Komutun işlevi:${RESET} $2"
   else
     echo -e "${RED}Komut atlandı:${RESET} $1"
   fi
