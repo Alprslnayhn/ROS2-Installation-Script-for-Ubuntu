@@ -190,6 +190,7 @@ ubuntu_22045() {
     ask_to_run 'sudo apt-get install ros-humble-tf-transformations' "TF Transformations paketini yükler."
 
     ask_to_run 'sudo apt-get install python3-pip' "Python3 Pip paket yöneticisini yükler."
+    ask_to_run 'sudo apt install python3-colcon-common-extensions' "ROS 2 projelerini derlemek için gerekli olan 'colcon-common-extensions' paketini Python 3 için yükler."
 
     ask_to_run 'pip install transforms3d' "Python'da transforms3d paketini yükler."
   else
